@@ -1,5 +1,6 @@
 /**
  * NodeJS REST API Boiler Plate
+ * Degananda Ferdian
  */
 import express from 'express';
 // module router
@@ -10,6 +11,7 @@ import bodyparser from 'body-parser';
 // global middleware
 import { authMiddleware } from './middleware/auth.middleware';
 import { headerValidatorMiddleware } from './middleware/header.validator.middleware';
+import { basicAuthMiddleware } from './middleware/basic.auth.middleware';
 // config
 import { NODE_ENVIRONMENT } from './constants/config.json';
 
@@ -26,8 +28,9 @@ class App {
         this.app.use(bodyparser.json());
 
         // middleware
-        this.app.use(headerValidatorMiddleware.headerValidator)
-        this.app.use(authMiddleware.jwtAuth);
+        this.app.use(headerValidatorMiddleware.headerValidator);
+        this.app.use(/\/((?!auth).)*/, authMiddleware.jwtAuth);
+        this.app.use('/auth', basicAuthMiddleware.basicAuthLogin , basicAuthMiddleware.basicAuth);
 
         // router
         this.app.use(authRoute);

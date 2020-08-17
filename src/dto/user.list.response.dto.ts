@@ -1,4 +1,4 @@
-import { UserDTO } from './user.dto';
+import { UserDTO } from './user.request.dto';
 import { Responses } from './response.dto';
 
 export class UserListResponseDTO extends Responses {

@@ -1,4 +1,4 @@
-export class HeaderEnrichmentModel {
+export class HeaderEnrichmentDTO {
 
     transactionId : string;
 

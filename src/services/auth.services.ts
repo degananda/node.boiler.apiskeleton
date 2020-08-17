@@ -1,5 +1,4 @@
-import { AuthDTO } from './../dto/auth.dto';
-import { AuthResponseDTO } from './../dto/auth.response.dto';
+import { AuthDTO } from '../dto/auth.request.dto';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
 class AuthService {
@@ -8,10 +7,10 @@ class AuthService {
 
     }
 
-    generateJwtToken(){
+    generateJwtToken() : AuthDTO{
         const fs = require('fs');
-        var pkeycert = fs.readFileSync('./authKey/private_key.pem');
-        var jwtToken = jwt.sign(
+        const pkeycert = fs.readFileSync('./authKey/jwtRS256.key');
+        const jwtToken = jwt.sign(
             { 
                 username : 'default',
                 exp: Math.floor(Date.now() / 1000) + (60 * 60)
@@ -19,7 +18,21 @@ class AuthService {
             pkeycert, 
             { algorithm: 'RS256' }
         )
-        return jwtToken;
+        const validJwtToken : AuthDTO = new AuthDTO(jwtToken);
+        return validJwtToken;
+    }
+
+    validateToken(token : AuthDTO) : boolean {
+        let tokenStatus = false;
+        const pkeycert = fs.readFileSync('./authKey/jwtRS256.key.pub');
+        jwt.verify(String(token.jwtToken), pkeycert, { algorithms: ['RS256'] }, (err, decoded) => {
+            if(err){
+                tokenStatus = false;
+            } else {
+                tokenStatus = true;
+            }
+        });
+        return tokenStatus;
     }
 
 }

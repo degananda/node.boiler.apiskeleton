@@ -1,5 +1,5 @@
 import { Responses } from './response.dto';
-import { AuthDTO } from './auth.dto';
+import { AuthDTO } from './auth.request.dto';
 export class AuthResponseDTO extends Responses {
     
     public accessToken? : string;

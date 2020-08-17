@@ -2,6 +2,9 @@
     "NODE_ENVIRONMENT" : {
         "PORT" : 3000
     },
+    "BASIC_AUTH" : {
+        "password" : "dega"
+    },
     "STATUS_CODE" : {
         "SUCCESS" : 200,
         "BAD_REQUEST" : 400,
@@ -11,7 +14,9 @@
     "DESCRIPTION" : {
         "SUCCESS" : "Operation success",
         "BAD_REQUEST" : "Bad request",
+        "MISSING_AUTHORIZATION" : "missing authorization header",
         "UNAUTHORIZED" : "Unauthorized operation",
+        "WRONG_TOKEN" : "Unauthorized token",
         "SERVER_ERROR" : "Internal server error. Kindly check with administrator.",
         "MISSING_TRANSACTION_ID" : "Bad request. Missing transactionId in header"
     }

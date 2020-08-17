@@ -1,4 +1,4 @@
-import { UserModel } from './../models/user.model';
+import { UserModel } from '../models/user.model';
 export class UserDTO {
     
     public userId : number;

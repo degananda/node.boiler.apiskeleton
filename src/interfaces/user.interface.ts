@@ -1,4 +1,4 @@
-import { UserDTO } from './../dto/user.dto';
+import { UserDTO } from '../dto/user.request.dto';
 export interface UserServiceInterface {
     /**
      * 

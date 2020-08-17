@@ -1,5 +1,5 @@
 import { UserModel } from './../models/user.model';
-import { UserDTO } from './../dto/user.dto';
+import { UserDTO } from '../dto/user.request.dto';
 import { UserServiceInterface } from './../interfaces/user.interface';
 class UserService implements UserServiceInterface {
 
